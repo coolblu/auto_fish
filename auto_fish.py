@@ -137,9 +137,9 @@ def automate_fishing():
             if debug:
                 log_message(f"No target subtitle detected for {idle_time_limit} seconds, recast the fishing rod")
 
-        # Add a small delay to avoid excessive CPU usage and to maintain timing accuracy
-        # elapsed_time = time.time() - start_time
-        # time.sleep(max(0.1 - elapsed_time, 0))
+        # Add a very small delay to avoid excessive CPU usage and to maintain timing accuracy
+        elapsed_time = time.time() - start_time
+        time.sleep(max(0.05 - elapsed_time, 0))
 
 def start_fishing():
     global running
