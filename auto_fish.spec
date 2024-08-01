@@ -19,6 +19,7 @@ a = Analysis(
         'torchvision.transforms',
         'torchvision.datasets',
         'PIL._imaging',  # Add Pillow imaging
+        'cv2',
     ],
     hookspath=[],
     runtime_hooks=[],

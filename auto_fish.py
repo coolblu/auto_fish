@@ -7,6 +7,7 @@ import tkinter as tk
 from tkinter import messagebox
 from PIL import ImageGrab
 import os
+import cv2
 import win32api
 import win32con
 import win32gui
@@ -31,9 +32,10 @@ action_delay = 1.0  # Delay between actions
 idle_time_limit = 10  # Idle time limit in seconds
 
 def capture_screen(region):
-    # Capture a region of the screen
+    # Capture a region of the screen using Pillow
     screenshot = ImageGrab.grab(bbox=(region["left"], region["top"], region["left"] + region["width"], region["top"] + region["height"]))
-    return np.array(screenshot)
+    screenshot_np = np.array(screenshot)
+    return cv2.cvtColor(screenshot_np, cv2.COLOR_BGR2RGB)
 
 def read_subtitles(image):
     # Use EasyOCR to do OCR on the image
