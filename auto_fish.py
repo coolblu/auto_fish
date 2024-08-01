@@ -5,7 +5,6 @@ import time
 import threading
 import tkinter as tk
 from tkinter import messagebox
-from PIL import ImageGrab
 import os
 import cv2
 import win32api
@@ -32,10 +31,9 @@ action_delay = 1.0  # Delay between actions
 idle_time_limit = 10  # Idle time limit in seconds
 
 def capture_screen(region):
-    # Capture a region of the screen using Pillow
-    screenshot = ImageGrab.grab(bbox=(region["left"], region["top"], region["left"] + region["width"], region["top"] + region["height"]))
-    screenshot_np = np.array(screenshot)
-    return cv2.cvtColor(screenshot_np, cv2.COLOR_BGR2RGB)
+    # Capture a region of the screen using OpenCV
+    screenshot = np.array(pyautogui.screenshot(region=(region["left"], region["top"], region["width"], region["height"])))
+    return cv2.cvtColor(screenshot, cv2.COLOR_BGR2RGB)
 
 def read_subtitles(image):
     # Use EasyOCR to do OCR on the image
@@ -210,6 +208,7 @@ def update_idle_time_limit():
 # Create the GUI
 root = tk.Tk()
 root.title("Minecraft Fishing Automation")
+root.attributes("-topmost", True)  # Make the window stay on top
 
 start_button = tk.Button(root, text="Start", command=start_fishing)
 start_button.pack(pady=10)

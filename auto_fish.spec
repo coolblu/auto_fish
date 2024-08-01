@@ -22,7 +22,6 @@ a = Analysis(
         'cv2',
         'numpy',  
         'pyautogui',  
-        'PIL',  
         'win32api',     
         'win32con',  
         'win32gui', 
