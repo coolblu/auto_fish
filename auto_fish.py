@@ -35,20 +35,9 @@ def capture_screen(region):
     screenshot = np.array(pyautogui.screenshot(region=(region["left"], region["top"], region["width"], region["height"])))
     return cv2.cvtColor(screenshot, cv2.COLOR_BGR2RGB)
 
-def preprocess_image(image):
-    # Convert to grayscale
-    gray_image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
-    # Apply Gaussian blur to reduce noise
-    blurred_image = cv2.GaussianBlur(gray_image, (5, 5), 0)
-    # Apply thresholding to get a binary image
-    _, binary_image = cv2.threshold(blurred_image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    return binary_image
-
 def read_subtitles(image):
-    # Preprocess the image
-    preprocessed_image = preprocess_image(image)
     # Use EasyOCR to do OCR on the image
-    results = reader.readtext(preprocessed_image, detail=0)
+    results = reader.readtext(image, detail=0)
     return ' '.join(results)
 
 def log_message(message):
@@ -125,11 +114,13 @@ def automate_fishing():
         if debug:
             log_message(f"Detected subtitles: {subtitles}")
 
+        current_time = time.time()
+        
         # Check if the subtitles contain "Fishing Bobber splashes"
         if "Fishing Bobber splashes" in subtitles:
             # Simulate right mouse click to reel in the fish
             pyautogui.click(button='right')
-            last_action_time = time.time()  # Reset the last action time
+            last_action_time = current_time  # Reset the last action time
             if debug:
                 log_message("Fishing Bobber splashes detected, clicked the mouse to reel in the fish")
 
@@ -138,16 +129,16 @@ def automate_fishing():
 
             # Recast the fishing rod
             pyautogui.click(button='right')
-            last_action_time = time.time()  # Reset the last action time again
+            last_action_time = current_time  # Reset the last action time again
             if debug:
                 log_message("Recast the fishing rod")
         elif "Splashing" in subtitles:
             # If "Splashing" is detected, update the idle time
-            last_action_time = time.time()
-        elif time.time() - last_action_time > idle_time_limit:
+            last_action_time = current_time
+        elif current_time - last_action_time > idle_time_limit:
             # If no target subtitle detected for the idle time limit, recast the fishing rod
             pyautogui.click(button='right')
-            last_action_time = time.time()  # Reset the last action time
+            last_action_time = current_time  # Reset the last action time
             if debug:
                 log_message(f"No target subtitle detected for {idle_time_limit} seconds, recast the fishing rod")
 
