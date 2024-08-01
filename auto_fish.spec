@@ -20,6 +20,12 @@ a = Analysis(
         'torchvision.datasets',
         'PIL._imaging',  # Add Pillow imaging
         'cv2',
+        'numpy',  
+        'pyautogui',  
+        'PIL',  
+        'win32api',     
+        'win32con',  
+        'win32gui',  
     ],
     hookspath=[],
     runtime_hooks=[],
