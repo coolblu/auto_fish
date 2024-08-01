@@ -35,9 +35,20 @@ def capture_screen(region):
     screenshot = np.array(pyautogui.screenshot(region=(region["left"], region["top"], region["width"], region["height"])))
     return cv2.cvtColor(screenshot, cv2.COLOR_BGR2RGB)
 
+def preprocess_image(image):
+    # Convert to grayscale
+    gray_image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+    # Apply Gaussian blur to reduce noise
+    blurred_image = cv2.GaussianBlur(gray_image, (5, 5), 0)
+    # Apply thresholding to get a binary image
+    _, binary_image = cv2.threshold(blurred_image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    return binary_image
+
 def read_subtitles(image):
+    # Preprocess the image
+    preprocessed_image = preprocess_image(image)
     # Use EasyOCR to do OCR on the image
-    results = reader.readtext(image, detail=0)
+    results = reader.readtext(preprocessed_image, detail=0)
     return ' '.join(results)
 
 def log_message(message):
