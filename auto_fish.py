@@ -132,6 +132,9 @@ def automate_fishing():
             last_action_time = time.time()  # Reset the last action time again
             if debug:
                 log_message("Recast the fishing rod")
+        elif "Splashing" in subtitles:
+            # If "Splashing" is detected, update the idle time
+            last_action_time = time.time()
         elif time.time() - last_action_time > idle_time_limit:
             # If no target subtitle detected for the idle time limit, recast the fishing rod
             pyautogui.click(button='right')
