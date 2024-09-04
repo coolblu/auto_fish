@@ -26,7 +26,7 @@ Additionally, you must install Tesseract OCR on your system. On Windows, you can
 
 After installing, ensure that `pytesseract` can find the Tesseract executable by setting the path in the script:
 ```python
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR	esseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OC\tesseract.exe'
 ```
 
 ## How to Run
