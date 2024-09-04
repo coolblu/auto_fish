@@ -1,4 +1,5 @@
-.venv
-build
-dist
-easyocr_models
+.venv/
+build/
+dist/
+easyocr_models/
+*.spec
