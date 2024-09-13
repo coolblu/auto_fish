@@ -90,7 +90,6 @@ When enabled, debug mode:
 This project is open-source and available under the MIT License.
 
 ## Credits
-https://github.com/UB-Mannheim/tesseract/wiki
 This script uses:
 
 - [Tesseract OCR](https://github.com/UB-Mannheim/tesseract/wiki) for text detection.
