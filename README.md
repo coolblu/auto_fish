@@ -3,7 +3,7 @@
 
 ## Overview
 
-This project is an automation script designed to fish automatically in Minecraft by detecting on-screen text using Tesseract OCR (Optical Character Recognition). It uses various Python libraries such as `pytesseract`, `pyautogui`, `opencv-python`, and `tkinter` to create a GUI, capture screen regions, detect specific text (like "Fish"), and simulate mouse clicks to automate the fishing process.
+This project is an automation script designed to fish automatically in Minecraft by detecting on-screen subtitles using Tesseract OCR (Optical Character Recognition). It uses various Python libraries such as `pytesseract`, `pyautogui`, `opencv-python`, and `tkinter` to create a GUI, capture screen regions, detect specific text (like "Fish"), and simulate mouse clicks to automate the fishing process.
 
 ## Features
 
@@ -40,8 +40,8 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OC\tesserac
    ```bash
    python auto_fish.py
    ```
-
-3. **Using the GUI**:
+3. **Turn on subtitles in accessiblity settings in Minecraft**
+4. **Using the GUI**:
     - **Start**: Click the "Start" button to begin the fishing automation.
     - **Stop**: Click the "Stop" button to stop the automation.
     - **Debug Mode**: Toggle debug mode by clicking the "Debug: OFF" button, which will change to "Debug: ON" to enable debug messages and an overlay.
@@ -51,7 +51,7 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OC\tesserac
     - **Switching Interval**: Set the time interval to switch between different water bodies.
     - **Move Duration**: Adjust the duration for moving between water bodies.
 
-4. **Exiting the Program**:
+5. **Exiting the Program**:
    - To exit, click the "Exit" button or close the window.
 
 ## Customization
