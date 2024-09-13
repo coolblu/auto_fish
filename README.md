@@ -1,5 +1,5 @@
 
-# Minecraft Fishing Automation Script (Using Tesseract)
+# auto_fish (Using Tesseract)
 
 ## Overview
 
