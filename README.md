@@ -83,6 +83,7 @@ When enabled, debug mode:
 
 - This script is designed for systems running Windows due to the use of `win32api`, `win32con`, and `win32gui` libraries for the overlay. It may not be compatible with other operating systems.
 - Ensure Minecraft is running in a windowed mode and that the subtitles are turned on for the automation to work.
+- Tested in python 3.10
 
 ## License
 
